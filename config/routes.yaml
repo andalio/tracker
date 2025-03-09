@@ -1,5 +1,11 @@
-controllers:
-    resource:
-        path: ../src/Controller/
-        namespace: App\Controller
-    type: attribute
+#API
+track:
+  resource: "../src/Application/Api/Track.php"
+  prefix: /api/track
+  type: attribute
+
+#UI
+visits_controller:
+  resource: "../src/Application/UserInterface/Visits/VisitController.php"
+  prefix: /visits
+  type: attribute

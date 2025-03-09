@@ -1,0 +1,27 @@
+framework:
+    messenger:
+        default_bus: send.to.domain
+
+        serializer:
+            default_serializer: messenger.transport.symfony_serializer
+            symfony_serializer:
+                format: json
+                context:
+                    skip_null_values: true
+
+        buses:
+            send.to.domain:
+                middleware:
+                    - 'App\Infrastructure\Middleware\FailureCatcher'
+
+        transports:
+            track.visit:
+                dsn: '%env(MESSENGER_TRANSPORT_DSN)%'
+                options:
+                    queues:
+                        track.visit: ~
+                    exchange:
+                        name: 'track.visit'
+
+        routing:
+            'App\Domain\Visit\Event\TrackVisit': track.visit

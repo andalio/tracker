@@ -1,0 +1,20 @@
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping">
+    <entity name="App\Domain\Visit\Visit">
+        <id name="id" type="integer" column="id">
+            <generator/>
+        </id>
+
+        <field name="pageUrl" length="255"/>
+        <field name="userHash" length="255"/>
+        <field name="visitDate" type="date"/>
+        <field name="created" type="datetime"/>
+
+        <unique-constraints>
+            <unique-constraint name="unique_visit" columns="page_url,user_hash,visit_date"/>
+        </unique-constraints>
+
+        <lifecycle-callbacks>
+            <lifecycle-callback type="prePersist" method="setCreatedTimestamp"/>
+        </lifecycle-callbacks>
+    </entity>
+</doctrine-mapping>

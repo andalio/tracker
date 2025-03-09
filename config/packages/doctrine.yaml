@@ -1,0 +1,30 @@
+doctrine:
+    dbal:
+        connections:
+            default:
+                driver: 'pdo_mysql'
+                server_version: '8.2.20'
+                charset: utf8mb4
+                default_table_options:
+                    charset: utf8mb4
+                    collate: utf8mb4_unicode_ci
+                url: '%env(resolve:DATABASE_URL)%'
+    orm:
+        default_entity_manager: default
+        auto_generate_proxy_classes: true
+        entity_managers:
+            default:
+                naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware
+                auto_mapping: true
+                connection: default
+                mappings:
+                    App\Domain\Visit:
+                        is_bundle: false
+                        type: xml
+                        dir: '%kernel.project_dir%/src/Infrastructure/Doctrine/Visit/Mappings'
+                        prefix: 'App\Domain\Visit'
+                    App\Domain\AllowedDomain:
+                        is_bundle: false
+                        type: xml
+                        dir: '%kernel.project_dir%/src/Infrastructure/Doctrine/AllowedDomain/Mappings'
+                        prefix: 'App\Domain\AllowedDomain'
