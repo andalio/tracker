@@ -27,3 +27,17 @@ How to start it?
 4. Start RabbitMQ consumer: *php bin/console messenger:consume track.visit --limit=100*
 
 5. (Optional) Use Supervisor: *supervisorctl start track.visit:track.visit_0*
+
+----
+
+Improvements &#128578;
+
+1. Relationship between AllowedDomain and Visit
+2. Indexes for some important columns 
+3. More details about visits (device,browser,location,load time)
+4. Clients table, AllowedDomain relationship and Api Key for each client
+5. Batch processing, instead of one by one
+6. Exceptions & logs
+7. Unit tests
+8. Automated tests (api & functional)
+9. Performance tests (optional)
